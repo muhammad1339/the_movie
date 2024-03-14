@@ -1,7 +1,5 @@
 import 'package:the_movie/network/api/api.dart';
 
-import 'api_client.dart';
-
 class ApiService {
   ApiService._();
 

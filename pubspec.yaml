@@ -14,14 +14,17 @@ dependencies:
 
   intl: ^0.18.1
   #bloc
-  bloc: ^8.1.2
-  flutter_bloc: ^8.1.3
+  bloc: ^8.1.3
+  flutter_bloc: ^8.1.4
   #networking
-  dio: ^5.3.3
+  dio: ^5.4.1
+  http: ^1.2.1
   http_parser: ^4.0.2
   network_info_plus: ^4.1.0+1
+  # functional programming
+  fpdart: ^1.1.0
   #logging
-  logger: ^2.0.2+1
+  logger: ^2.1.0
   dio_http_formatter: ^3.2.1
 
   #ui helpers
@@ -29,12 +32,16 @@ dependencies:
   toast: ^0.3.0
   #design
   flutter_screenutil: ^5.9.0
-  flutter_svg: ^2.0.9
+  flutter_svg: ^2.0.10
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  # mockito: ^5.4.4
+  mocktail: ^1.0.3
+  bloc_test: ^9.1.6
+  build_runner: ^2.4.8
 
 flutter:
   uses-material-design: true
