@@ -1,0 +1,27 @@
+{
+    "page": 1,
+    "results": [
+      {
+        "adult": false,
+        "backdrop_path": "/bQS43HSLZzMjZkcHJz4fGc7fNdz.jpg",
+        "genre_ids": [
+          878,
+          10749,
+          35
+        ],
+        "id": 792307,
+        "original_language": "en",
+        "original_title": "Poor Things",
+        "overview": "Brought back to life by an unorthodox scientist, a young woman runs off with a debauched lawyer on a whirlwind adventure across the continents. Free from the prejudices of her times, she grows steadfast in her purpose to stand for equality and liberation.",
+        "popularity": 1968.226,
+        "poster_path": "/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg",
+        "release_date": "2023-12-07",
+        "title": "Poor Things",
+        "video": false,
+        "vote_average": 7.9,
+        "vote_count": 2174
+      }
+    ],
+    "total_pages": 10,
+    "total_results": 100
+  }

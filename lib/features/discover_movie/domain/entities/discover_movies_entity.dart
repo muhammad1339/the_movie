@@ -1,19 +1,24 @@
-class DiscoverMoviesEntity {
+import 'package:equatable/equatable.dart';
+
+class DiscoverMoviesEntity extends Equatable {
   final int? page;
   final List<ResultEntity>? results;
   final int? totalPages;
   final int? totalResults;
 
-  DiscoverMoviesEntity({
+  const DiscoverMoviesEntity({
     this.page,
     this.results,
     this.totalPages,
     this.totalResults,
   });
 
+  @override
+  List<Object?> get props => [page, results, totalPages, totalResults];
+
 }
 
-class ResultEntity {
+class ResultEntity extends Equatable{
   final bool? adult;
   final String? backdropPath;
   final List<int>? genreIds;
@@ -29,7 +34,7 @@ class ResultEntity {
   final double? voteAverage;
   final int? voteCount;
 
-  ResultEntity({
+  const ResultEntity({
     this.adult,
     this.backdropPath,
     this.genreIds,
@@ -46,4 +51,21 @@ class ResultEntity {
     this.voteCount,
   });
 
+  @override
+  List<Object?> get props => [
+    adult,
+    backdropPath,
+    genreIds,
+    id,
+    originalLanguage,
+    originalTitle,
+    overview,
+    popularity,
+    posterPath,
+    releaseDate,
+    title,
+    video,
+    voteAverage,
+    voteCount,
+  ];
 }
