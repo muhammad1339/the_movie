@@ -13,7 +13,7 @@ void main() {
 
   setUp(() {
     mockMovieRepository = MockMovieRepository();
-    discoverMoviesUsecase = DiscoverMoviesUsecase(mockMovieRepository);
+    discoverMoviesUsecase = DiscoverMoviesUsecase(repository: mockMovieRepository);
   });
 
   const discoverMoviesEntity = DiscoverMoviesEntity(
