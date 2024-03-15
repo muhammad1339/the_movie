@@ -19,7 +19,7 @@ dependencies:
   equatable: ^2.0.5
   #networking
   dio: ^5.4.1
-  http: ^1.2.1
+  # http: ^1.2.1
   http_parser: ^4.0.2
   network_info_plus: ^4.1.0+1
   # functional programming
@@ -43,6 +43,7 @@ dev_dependencies:
   mocktail: ^1.0.3
   bloc_test: ^9.1.6
   build_runner: ^2.4.8
+  http_mock_adapter: ^0.6.1
 
 flutter:
   uses-material-design: true

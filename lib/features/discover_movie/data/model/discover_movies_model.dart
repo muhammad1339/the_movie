@@ -1,9 +1,9 @@
 import 'package:the_movie/features/discover_movie/domain/entities/discover_movies_entity.dart';
 
 class DiscoverMoviesModel extends DiscoverMoviesEntity {
-  DiscoverMoviesModel({
+  const DiscoverMoviesModel({
     required int page,
-    required List<ResultEntity> results,
+    required List<ResultModel> results,
     required int totalPages,
     required int totalResults,
   }) : super(
@@ -16,7 +16,7 @@ class DiscoverMoviesModel extends DiscoverMoviesEntity {
   factory DiscoverMoviesModel.fromJson(Map<String, dynamic> json) {
     return DiscoverMoviesModel(
       page: json['page'],
-      results: List<ResultEntity>.from(json['results'].map((x) => ReslutModel.fromJson(x))),
+      results: List<ResultModel>.from(json['results'].map((x) => ResultModel.fromJson(x))),
       totalPages: json['total_pages'],
       totalResults: json['total_results'],
     );
@@ -25,17 +25,26 @@ class DiscoverMoviesModel extends DiscoverMoviesEntity {
   Map<String, dynamic> toJson() {
     return {
       'page': page,
-      'results': results?.map((x) => (x as ReslutModel).toJson()).toList(),
+      'results': results?.map((x) => (x as ResultModel).toJson()).toList(),
       'total_pages': totalPages,
       'total_results': totalResults,
     };
   }
 
+  DiscoverMoviesEntity toEntity() {
+    return DiscoverMoviesEntity(
+      page: page,
+      results: results?.map((x) => (x as ResultModel).toEntity()).toList(),
+      totalPages: totalPages,
+      totalResults: totalResults,
+    );
+  }
+
   
 }
 
-class ReslutModel extends ResultEntity {
-  ReslutModel({ 
+class ResultModel extends ResultEntity {
+  const ResultModel({ 
     required bool adult,
     required String backdropPath,
     required List<int> genreIds,
@@ -67,8 +76,8 @@ class ReslutModel extends ResultEntity {
           voteCount: voteCount,
         );
 
-  factory ReslutModel.fromJson(Map<String, dynamic> json) {
-    return ReslutModel(
+  factory ResultModel.fromJson(Map<String, dynamic> json) {
+    return ResultModel(
       adult: json['adult'],
       backdropPath: json['backdrop_path'],
       genreIds: json['genre_ids'].cast<int>(),
@@ -104,4 +113,24 @@ class ReslutModel extends ResultEntity {
       'vote_count': voteCount,
     };
   }
+
+  ResultEntity toEntity() {
+    return ResultEntity(
+      adult: adult,
+      backdropPath: backdropPath,
+      genreIds: genreIds,
+      id: id,
+      originalLanguage: originalLanguage,
+      originalTitle: originalTitle,
+      overview: overview,
+      popularity: popularity,
+      posterPath: posterPath,
+      releaseDate: releaseDate,
+      title: title,
+      video: video,
+      voteAverage: voteAverage,
+      voteCount: voteCount,
+    );
+  }
+
 }

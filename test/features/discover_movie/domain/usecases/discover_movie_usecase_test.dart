@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:the_movie/features/discover_movie/domain/entities/discover_movies_entity.dart';
-import 'package:the_movie/features/discover_movie/domain/repository/movie_repository.dart';
-import 'package:the_movie/features/discover_movie/domain/usecases/discover_movies_usecase.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:the_movie/features/discover_movie/domain/entities/discover_movies_entity.dart';
+import 'package:the_movie/features/discover_movie/domain/repository/discover_movie_repository.dart';
+import 'package:the_movie/features/discover_movie/domain/usecases/discover_movies_usecase.dart';
 
-class MockMovieRepository extends Mock implements MovieRepository {}
+class MockMovieRepository extends Mock implements DiscoverMovieRepository {}
 
 void main() {
   late DiscoverMoviesUsecase discoverMoviesUsecase;

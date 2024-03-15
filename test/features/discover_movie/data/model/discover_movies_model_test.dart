@@ -9,7 +9,7 @@ void main() {
   DiscoverMoviesModel discoverMoviesModel = DiscoverMoviesModel(
     page: 1,
     results: [
-      ReslutModel(
+      ResultModel(
         posterPath: '/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg',
         adult: false,
         overview:

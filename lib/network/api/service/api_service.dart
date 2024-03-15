@@ -11,7 +11,7 @@ class ApiService {
   Future<dynamic> discoverMovie({
     required page,
   }) async {
-    final response = await _apiClient.get('/discover/movie?api_key=${ServiceConst.apiKey}&page=$page');
+    final response = await _apiClient.get(ServiceConst.discoverMovie(page: page));
     return response;
   }
 }
