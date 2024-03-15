@@ -11,5 +11,6 @@ class KAppColors {
   static const color_C3ACD0 = Color(0xFFC3ACD0);
   static const color_1A376D = Color(0xFF1A376D);
   static const color_10254D = Color(0xFF10254D);
+  static const errorColor = Color(0xFFD32F2F);
 
 }

@@ -2,8 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:the_movie/features/discover_movie/data/model/discover_movies_model.dart';
 import 'package:the_movie/network/api/utils/service_const.dart';
 
-import '../../../../utils/logger.dart';
-
 abstract class DiscoverMovieDataSource {
   Future<DiscoverMoviesModel> discoverMovies({required int page});
 }

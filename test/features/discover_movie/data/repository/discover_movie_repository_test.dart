@@ -7,7 +7,6 @@ import 'package:the_movie/features/discover_movie/data/model/discover_movies_mod
 import 'package:the_movie/features/discover_movie/data/repository/discover_movie_repository_impl.dart';
 import 'package:the_movie/features/discover_movie/domain/entities/discover_movies_entity.dart';
 import 'package:the_movie/network/api/api.dart';
-import 'package:the_movie/utils/logger.dart';
 
 class DiscoverMovieDataSourceMock extends Mock implements DiscoverMovieDataSource {}
 

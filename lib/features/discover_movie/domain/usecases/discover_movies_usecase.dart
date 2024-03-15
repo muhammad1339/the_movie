@@ -6,7 +6,7 @@ import 'package:the_movie/network/api/utils/error_model.dart';
 class DiscoverMoviesUsecase {
   final DiscoverMovieRepository repository;
 
-  DiscoverMoviesUsecase(this.repository);
+  DiscoverMoviesUsecase({required this.repository});
 
   Future<Either<HttpError, DiscoverMoviesEntity>> call({required int page}) async {
     return await repository.discoverMovies(page: page);

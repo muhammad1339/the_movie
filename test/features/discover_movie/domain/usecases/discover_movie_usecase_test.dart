@@ -16,7 +16,7 @@ void main() {
     discoverMoviesUsecase = DiscoverMoviesUsecase(mockMovieRepository);
   });
 
-  DiscoverMoviesEntity discoverMoviesEntity = DiscoverMoviesEntity(
+  const discoverMoviesEntity = DiscoverMoviesEntity(
     page: 1,
     results: [
       ResultEntity(
@@ -48,12 +48,12 @@ void main() {
       () => mockMovieRepository.discoverMovies(page: firstPage),
     ).thenAnswer(
       (realInvocation) async {
-        return Right(discoverMoviesEntity);
+        return const Right(discoverMoviesEntity);
       },
     );
     // act
     final result = await discoverMoviesUsecase.call(page: firstPage);
     // assert
-    expect(result, Right(discoverMoviesEntity));
+    expect(result, const Right(discoverMoviesEntity));
   });
 }

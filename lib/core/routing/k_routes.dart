@@ -15,8 +15,6 @@ class KAppRoutes {
         return createRoute(const SplashPage(), settings: routeSettings);
       case discoverMovie:
         return createRoute(const DiscoverMoviePage(), settings: routeSettings);
-
-
     }
     return null;
   }

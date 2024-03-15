@@ -6,7 +6,7 @@ import 'package:the_movie/features/discover_movie/data/model/discover_movies_mod
 import '../../../../utils/json_utils.dart';
 
 void main() {
-  DiscoverMoviesModel discoverMoviesModel = DiscoverMoviesModel(
+  DiscoverMoviesModel discoverMoviesModel = const DiscoverMoviesModel(
     page: 1,
     results: [
       ResultModel(
@@ -15,7 +15,7 @@ void main() {
         overview:
             'Brought back to life by an unorthodox scientist, a young woman runs off with a debauched lawyer on a whirlwind adventure across the continents. Free from the prejudices of her times, she grows steadfast in her purpose to stand for equality and liberation.',
         releaseDate: '2023-12-07',
-        genreIds: const [878, 10749, 35],
+        genreIds: [878, 10749, 35],
         id: 792307,
         originalTitle: 'Poor Things',
         originalLanguage: 'en',
