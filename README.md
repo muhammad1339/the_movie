@@ -1,6 +1,6 @@
 # the_movie
 
-# Flutter Movie App Task using The Movie Database (TMDb) API
+# Flutter Movie App using The Movie Database (TMDb) API
 
 ## Objective
 The objective of this task is to create a Flutter application that allows users to browse movies 
