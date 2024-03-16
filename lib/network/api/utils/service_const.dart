@@ -6,5 +6,5 @@ class ServiceConst {
   static const imageUrl = 'https://image.tmdb.org/t/p/w500';
   static const language = 'en-US';
   static const region = 'US';
-  static String discoverMovie({int page=1}) => '/discover/movie?api_key=$apiKey&page=$page';
+  static String discoverMovie({int page=1}) => '/discover/movie?api_key=$apiKey&page=$page&include_adult=false';
 }

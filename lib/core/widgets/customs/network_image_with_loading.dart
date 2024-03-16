@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:the_movie/core/res/assets.dart';
+import 'package:the_movie/core/widgets/placeholders/empty_placehoder.dart';
 
 import '../../res/colors.dart';
 import 'loading_widget.dart';
@@ -23,7 +25,10 @@ class NetworkImageWithLoading extends StatelessWidget {
       child: Image.network(
         img,
         fit: boxFit ?? BoxFit.cover,
-        loadingBuilder: (context, url, loadingProgress) {
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) {
+            return child;
+          }
           return const Center(
             child: LoadingWidget(
               color: KAppColors.primaryColor,
@@ -32,8 +37,13 @@ class NetworkImageWithLoading extends StatelessWidget {
         },
         errorBuilder: (context, error, stackTrace) {
           return Container(
-            color: Colors.grey[300],
-            child: const Icon(Icons.error_outline),
+            color: KAppColors.hintColor,
+            child: const Center(
+              child: EmptyPlaceHolder(
+                message: 'Error Loading Image',
+                asset: KAppSvgs.error,
+              ),
+            ),
           );
         },
       ),

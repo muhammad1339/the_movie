@@ -19,7 +19,7 @@ void main() {
   const discoverMoviesEntity = DiscoverMoviesEntity(
     page: 1,
     results: [
-      ResultEntity(
+      MovieItemEntity(
         adult: false,
         backdropPath: '/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg',
         genreIds: [28, 12, 14],

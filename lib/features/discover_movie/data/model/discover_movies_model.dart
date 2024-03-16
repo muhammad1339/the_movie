@@ -2,21 +2,16 @@ import 'package:the_movie/features/discover_movie/domain/entities/discover_movie
 
 class DiscoverMoviesModel extends DiscoverMoviesEntity {
   const DiscoverMoviesModel({
-    required int page,
-    required List<ResultModel> results,
-    required int totalPages,
-    required int totalResults,
-  }) : super(
-          page: page,
-          results: results,
-          totalPages: totalPages,
-          totalResults: totalResults,
-        );
+    required super.page,
+    required List<MovieItemModel>? super.results,
+    required super.totalPages,
+    required super.totalResults,
+  });
 
   factory DiscoverMoviesModel.fromJson(Map<String, dynamic> json) {
     return DiscoverMoviesModel(
       page: json['page'],
-      results: List<ResultModel>.from(json['results'].map((x) => ResultModel.fromJson(x))),
+      results: List<MovieItemModel>.from(json['results'].map((x) => MovieItemModel.fromJson(x))),
       totalPages: json['total_pages'],
       totalResults: json['total_results'],
     );
@@ -25,7 +20,7 @@ class DiscoverMoviesModel extends DiscoverMoviesEntity {
   Map<String, dynamic> toJson() {
     return {
       'page': page,
-      'results': results?.map((x) => (x as ResultModel).toJson()).toList(),
+      'results': results?.map((x) => (x as MovieItemModel).toJson()).toList(),
       'total_pages': totalPages,
       'total_results': totalResults,
     };
@@ -34,7 +29,7 @@ class DiscoverMoviesModel extends DiscoverMoviesEntity {
   DiscoverMoviesEntity toEntity() {
     return DiscoverMoviesEntity(
       page: page,
-      results: results?.map((x) => (x as ResultModel).toEntity()).toList(),
+      results: results?.map((x) => (x as MovieItemModel).toEntity()).toList(),
       totalPages: totalPages,
       totalResults: totalResults,
     );
@@ -43,41 +38,26 @@ class DiscoverMoviesModel extends DiscoverMoviesEntity {
   
 }
 
-class ResultModel extends ResultEntity {
-  const ResultModel({ 
-    required bool adult,
-    required String backdropPath,
-    required List<int> genreIds,
-    required int id,
-    required String originalLanguage,
-    required String originalTitle,
-    required String overview,
-    required double popularity,
-    required String posterPath,
-    required String releaseDate,
-    required String title,
-    required bool video,
-    required double voteAverage,
-    required int voteCount,
-  }) : super(
-          adult: adult,
-          backdropPath: backdropPath,
-          genreIds: genreIds,
-          id: id,
-          originalLanguage: originalLanguage,
-          originalTitle: originalTitle,
-          overview: overview,
-          popularity: popularity,
-          posterPath: posterPath,
-          releaseDate: releaseDate,
-          title: title,
-          video: video,
-          voteAverage: voteAverage,
-          voteCount: voteCount,
-        );
+class MovieItemModel extends MovieItemEntity {
+  const MovieItemModel({ 
+    required super.adult,
+    required super.backdropPath,
+    required super.genreIds,
+    required super.id,
+    required super.originalLanguage,
+    required super.originalTitle,
+    required super.overview,
+    required super.popularity,
+    required super.posterPath,
+    required super.releaseDate,
+    required super.title,
+    required super.video,
+    required super.voteAverage,
+    required super.voteCount,
+  });
 
-  factory ResultModel.fromJson(Map<String, dynamic> json) {
-    return ResultModel(
+  factory MovieItemModel.fromJson(Map<String, dynamic> json) {
+    return MovieItemModel(
       adult: json['adult'],
       backdropPath: json['backdrop_path'],
       genreIds: json['genre_ids'].cast<int>(),
@@ -114,8 +94,8 @@ class ResultModel extends ResultEntity {
     };
   }
 
-  ResultEntity toEntity() {
-    return ResultEntity(
+  MovieItemEntity toEntity() {
+    return MovieItemEntity(
       adult: adult,
       backdropPath: backdropPath,
       genreIds: genreIds,

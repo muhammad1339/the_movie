@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_movie/features/discover_movie/presentation/view/discover_movie_page.dart';
+import 'package:the_movie/features/movie_details/presentation/view/movie_detail_page.dart';
 
 import '../../features/splash/view/splash_page.dart';
 import 'route_transitions.dart';
@@ -15,6 +16,8 @@ class KAppRoutes {
         return createRoute(const SplashPage(), settings: routeSettings);
       case discoverMovie:
         return createRoute(const DiscoverMoviePage(), settings: routeSettings);
+      case movieDetail:
+        return createRoute(const MovieDetailPage(), settings: routeSettings);
     }
     return null;
   }

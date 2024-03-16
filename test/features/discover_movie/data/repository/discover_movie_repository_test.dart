@@ -22,7 +22,7 @@ void main() {
   const discoverMovieModel = DiscoverMoviesModel(
     page: 1,
     results: [
-      ResultModel(
+      MovieItemModel(
         adult: false,
         backdropPath: '/path',
         genreIds: [1, 2],
@@ -46,7 +46,7 @@ void main() {
   const discoverMovieEntity = DiscoverMoviesEntity(
     page: 1,
     results: [
-      ResultEntity(
+      MovieItemEntity(
         adult: false,
         backdropPath: '/path',
         genreIds: [1, 2],

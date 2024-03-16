@@ -9,7 +9,7 @@ void main() {
   DiscoverMoviesModel discoverMoviesModel = const DiscoverMoviesModel(
     page: 1,
     results: [
-      ResultModel(
+      MovieItemModel(
         posterPath: '/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg',
         adult: false,
         overview:

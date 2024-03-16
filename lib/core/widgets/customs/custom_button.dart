@@ -33,7 +33,7 @@ class CustomButton extends StatelessWidget {
   final double? hMargin;
   final double? vMargin;
   final double? width;
-  final Function() onPressed;
+  final Function()? onPressed;
   final String text;
   final bool isLoading;
   final double? borderRadius;
