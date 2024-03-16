@@ -7,13 +7,13 @@ class DiscoverMovieInitial extends DiscoverMovieState {}
 class DiscoverMovieLoading extends DiscoverMovieState {}
 
 class DiscoverMovieSuccess extends DiscoverMovieState {
-  final DiscoverMoviesEntity discoverMoviesEntity;
+  // final DiscoverMoviesEntity discoverMoviesEntity;
 
-  DiscoverMovieSuccess({required this.discoverMoviesEntity});
+  // DiscoverMovieSuccess({required this.discoverMoviesEntity});
 }
 
 class DiscoverMovieError extends DiscoverMovieState {
-  final HttpError httpError;
+  final HttpError error;
 
-  DiscoverMovieError(this.httpError);
+  DiscoverMovieError(this.error);
 }

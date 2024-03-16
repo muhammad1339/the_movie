@@ -24,6 +24,7 @@ class DiscoverMoviePage extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           final cubit = context.read<DiscoverMovieCubit>();
+          String? errorMessage = state is DiscoverMovieError ? state.error.message : null;
           return Scaffold(
             appBar: AppBar(
               elevation: 1,
@@ -38,47 +39,58 @@ class DiscoverMoviePage extends StatelessWidget {
             ),
             body: state is DiscoverMovieLoading
                 ? const Center(child: LoadingWidget())
-                : PagedListView.separated(
-                    pagingController: cubit.pageController,
-                    physics: const BouncingScrollPhysics(),
-                    padding: MediaQuery.of(context).padding.copyWith(
-                          top: 16,
-                          left: 16,
-                          right: 16,
-                          bottom: 16,
+                : state is DiscoverMovieError
+                    ? Center(
+                      child: EmptyPlaceHolder(
+                          message: errorMessage ?? 'Error Loading Movies',
+                          asset: KAppSvgs.error,
+                          showRetryButton: true,
+                          onRetry: () {
+                            cubit.discoverMoviesPaged();
+                          },
                         ),
-                    separatorBuilder: (context, index) => 12.verticalSpace,
-                    builderDelegate: PagedChildBuilderDelegate<MovieItemEntity>(
-                      animateTransitions: true,
-                      newPageProgressIndicatorBuilder: (_) => const Center(
-                        child: LoadingWidget(),
+                    )
+                    : PagedListView.separated(
+                        pagingController: cubit.pageController,
+                        physics: const BouncingScrollPhysics(),
+                        padding: MediaQuery.of(context).padding.copyWith(
+                              top: 16,
+                              left: 16,
+                              right: 16,
+                              bottom: 16,
+                            ),
+                        separatorBuilder: (context, index) => 12.verticalSpace,
+                        builderDelegate: PagedChildBuilderDelegate<MovieItemEntity>(
+                          animateTransitions: true,
+                          newPageProgressIndicatorBuilder: (_) => const Center(
+                            child: LoadingWidget(),
+                          ),
+                          noItemsFoundIndicatorBuilder: (_) => const EmptyPlaceHolder(
+                            message: 'No Movies Found',
+                          ),
+                          newPageErrorIndicatorBuilder: (_) => EmptyPlaceHolder(
+                            message: errorMessage ?? 'Error Loading Movies',
+                            asset: KAppSvgs.error,
+                            showRetryButton: true,
+                            onRetry: () {
+                              cubit.pageController.retryLastFailedRequest();
+                            },
+                          ),
+                          firstPageErrorIndicatorBuilder: (_) => EmptyPlaceHolder(
+                            asset: KAppSvgs.error,
+                            message: 'Error Loading Movies',
+                            showRetryButton: true,
+                            onRetry: () {
+                              cubit.pageController.refresh();
+                            },
+                          ),
+                          itemBuilder: (context, item, index) {
+                            return MovieItemWidget(
+                              movieItemEntity: item,
+                            );
+                          },
+                        ),
                       ),
-                      noItemsFoundIndicatorBuilder: (_) => const EmptyPlaceHolder(
-                        message: 'No Movies Found',
-                      ),
-                      newPageErrorIndicatorBuilder: (_) => EmptyPlaceHolder(
-                        message: 'Error Loading Movies',
-                        asset: KAppSvgs.error,
-                        showRetryButton: true,
-                        onRetry: () {
-                          cubit.pageController.retryLastFailedRequest();
-                        },
-                      ),
-                      firstPageErrorIndicatorBuilder: (_) => EmptyPlaceHolder(
-                        asset: KAppSvgs.error,
-                        message: 'Error Loading Movies',
-                        showRetryButton: true,
-                        onRetry: () {
-                          cubit.pageController.refresh();
-                        },
-                      ),
-                      itemBuilder: (context, item, index) {
-                        return MovieItemWidget(
-                          movieItemEntity: item,
-                        );
-                      },
-                    ),
-                  ),
           );
         },
       ),

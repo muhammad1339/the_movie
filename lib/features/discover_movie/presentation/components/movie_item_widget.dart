@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_movie/core/widgets/customs/network_image_with_loading.dart';
@@ -12,8 +11,10 @@ class MovieItemWidget extends StatelessWidget {
   const MovieItemWidget({
     super.key,
     required this.movieItemEntity,
+    this.aspectRatio = 16 / 9,
   });
   final MovieItemEntity movieItemEntity;
+  final double aspectRatio;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -26,7 +27,7 @@ class MovieItemWidget extends StatelessWidget {
       child: Stack(
         children: [
           AspectRatio(
-            aspectRatio: 16 / 9,
+            aspectRatio: aspectRatio,
             child: NetworkImageWithLoading(
               img: ServiceConst.imageUrl + (movieItemEntity.posterPath ?? ''),
             ),
@@ -36,9 +37,8 @@ class MovieItemWidget extends StatelessWidget {
             end: 0,
             start: 0,
             child: Container(
-            
               padding: EdgeInsets.all(16.w),
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(8.r),
                   bottomRight: Radius.circular(8.r),

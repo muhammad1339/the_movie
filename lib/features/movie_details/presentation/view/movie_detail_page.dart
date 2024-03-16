@@ -55,6 +55,7 @@ class MovieDetailPage extends StatelessWidget {
                 children: [
                   MovieItemWidget(
                     movieItemEntity: args ?? const MovieItemEntity(),
+                    aspectRatio: 0.8,
                   ),
                   16.verticalSpace,
                   const LabelWidget(text: 'overview : '),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:the_movie/core/res/assets.dart';
 import 'package:the_movie/core/widgets/placeholders/empty_placehoder.dart';
@@ -22,20 +23,18 @@ class NetworkImageWithLoading extends StatelessWidget {
     return ClipRRect(
       borderRadius: borderRadius,
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: Image.network(
-        img,
+      child: CachedNetworkImage(
+       imageUrl:  img,
         fit: boxFit ?? BoxFit.cover,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) {
-            return child;
-          }
-          return const Center(
-            child: LoadingWidget(
-              color: KAppColors.primaryColor,
+        progressIndicatorBuilder: (context, url, loadingProgress) {
+          return Container(
+            color: KAppColors.hintColor,
+            child: const Center(
+              child: LoadingWidget(),
             ),
           );
         },
-        errorBuilder: (context, error, stackTrace) {
+        errorWidget: (context, error, stackTrace) {
           return Container(
             color: KAppColors.hintColor,
             child: const Center(
