@@ -44,6 +44,7 @@ class MovieDetailPage extends StatelessWidget {
               ),
             ),
             body: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               padding: EdgeInsetsDirectional.only(
                 start: 16.w,
                 end: 16.w,
