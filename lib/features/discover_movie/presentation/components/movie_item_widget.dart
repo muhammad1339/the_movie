@@ -12,18 +12,17 @@ class MovieItemWidget extends StatelessWidget {
     super.key,
     required this.movieItemEntity,
     this.aspectRatio = 16 / 9,
+    this.onTap,
   });
+
   final MovieItemEntity movieItemEntity;
   final double aspectRatio;
+  final Function()? onTap;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).pushNamed(
-          KAppRoutes.movieDetail,
-          arguments: movieItemEntity,
-        );
-      },
+      onTap: onTap,
       child: Stack(
         children: [
           AspectRatio(

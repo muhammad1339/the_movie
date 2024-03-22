@@ -10,6 +10,7 @@ import 'package:the_movie/core/widgets/placeholders/empty_placehoder.dart';
 import 'package:the_movie/features/discover_movie/presentation/cubit/discover_movie_cubit.dart';
 import 'package:the_movie/utils/utils.dart';
 
+import '../../../../core/routing/k_routes.dart';
 import '../../domain/entities/discover_movies_entity.dart';
 import '../components/movie_item_widget.dart';
 
@@ -41,7 +42,7 @@ class DiscoverMoviePage extends StatelessWidget {
                 ? const Center(child: LoadingWidget())
                 : state is DiscoverMovieError
                     ? Center(
-                      child: EmptyPlaceHolder(
+                        child: EmptyPlaceHolder(
                           message: errorMessage ?? 'Error Loading Movies',
                           asset: KAppSvgs.error,
                           showRetryButton: true,
@@ -49,7 +50,7 @@ class DiscoverMoviePage extends StatelessWidget {
                             cubit.discoverMoviesPaged();
                           },
                         ),
-                    )
+                      )
                     : PagedListView.separated(
                         pagingController: cubit.pageController,
                         physics: const BouncingScrollPhysics(),
@@ -87,6 +88,12 @@ class DiscoverMoviePage extends StatelessWidget {
                           itemBuilder: (context, item, index) {
                             return MovieItemWidget(
                               movieItemEntity: item,
+                              onTap: () {
+                                Navigator.of(context).pushNamed(
+                                  KAppRoutes.movieDetail,
+                                  arguments: item,
+                                );
+                              },
                             );
                           },
                         ),
